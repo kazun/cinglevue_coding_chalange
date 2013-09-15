@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Cinglevue Coding Chalange</display-name>
+
+	<listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value></param-value>
+		</init-param>
+	</servlet>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+		/WEB-INF/spring-beans/web-servlet.xml
+		/WEB-INF/spring-beans/dbConfigContext.xml
+		/WEB-INF/spring-beans/hibernateConfigContext.xml
+		/WEB-INF/spring-beans/txnConfigContext.xml
+		</param-value>
+	</context-param>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.jpeg</url-pattern>
+		<url-pattern>*.PNG</url-pattern>
+		<url-pattern>*.GIF</url-pattern>
+		<url-pattern>*.JPEG</url-pattern>
+		<url-pattern>*.JPG</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<url-pattern>*.woff</url-pattern>
+		<url-pattern>*.ttf</url-pattern>
+	</servlet-mapping>
+
+
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404-error.html</location>
+	</error-page>
+
+</web-app>
